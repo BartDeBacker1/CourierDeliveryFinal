@@ -19,12 +19,12 @@ public class VehicleDAO {
         try {
             Connection connection = DatabaseConnection.getConnection();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into vehicle(width,height,capacity,status) values(?,?,?,?);");
-
-            preparedStatement.setDouble(1, vehicle.getWidth());
-            preparedStatement.setDouble(2, vehicle.getHeight());
-            preparedStatement.setDouble(3, vehicle.getCapacity());
-            preparedStatement.setString(4, vehicle.getStatus());
+                    .prepareStatement("insert into vehicle(user_id,width,height,capacity,status) values(?,?,?,?,?);");
+            preparedStatement.setInt(1, vehicle.getUserId());
+            preparedStatement.setDouble(2, vehicle.getWidth());
+            preparedStatement.setDouble(3, vehicle.getHeight());
+            preparedStatement.setDouble(4, vehicle.getCapacity());
+            preparedStatement.setString(5, vehicle.getStatus());
             // System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -45,11 +45,12 @@ public class VehicleDAO {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
+                int userId = rs.getInt("user_id");
                 Double width = rs.getDouble("width");
                 Double height = rs.getDouble("height");
                 Double capacity = rs.getDouble("capacity");
                 String status = rs.getString("status");
-                vehicles.add(new Vehicle(id, width, height, capacity, status));
+                vehicles.add(new Vehicle(id, userId, width, height, capacity, status));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

@@ -59,11 +59,11 @@ public class CourierDelivery {
         for (Order order : orders) {
             System.out.println("-----------------");
             System.out.println("Order Id: " + order.getId());
-            System.out.println("Order Customer Name: " + order.getCustomerName());
+            System.out.println("Order user id: " + order.getUserId());
+            System.out.println("Order address id: " + order.getDestinationAddressId());
             System.out.println("Order Dimensions: " + order.getWidth() + " x " + order.getHeight());
             System.out.println("Order Status: " + order.getStatus());
-            System.out.println("Order Source Address: " + order.getSourceAddress());
-            System.out.println("Order Destination Address: " + order.getDestinationAddress());
+            System.out.println("Order comment: " + order.getComment());
             System.out.println("Order Placing Date: " + order.getOrderPlacingDate());
             System.out.println("-----------------");
         }
@@ -113,32 +113,7 @@ public class CourierDelivery {
     }
 
 
-    public static void searchOrderUsingName() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter Customer Name: ");
-        String name = scan.nextLine();
 
-        boolean foundFlag = false;
-        ArrayList<Order> orders = (ArrayList<Order>) orderDAO.getAllOrders();
-        for (Order order : orders) {
-            if (order.getCustomerName().equals(name)) {
-                foundFlag = true;
-                System.out.println("-----------------");
-                System.out.println("Order Id: " + order.getId());
-                System.out.println("Order Customer Name: " + order.getCustomerName());
-                System.out.println("Order Dimensions: " + order.getWidth() + " x " + order.getHeight());
-                System.out.println("Order Status: " + order.getStatus());
-                System.out.println("Order Source Address: " + order.getSourceAddress());
-                System.out.println("Order Destination Address: " + order.getDestinationAddress());
-                System.out.println("Order Placing Date: " + order.getOrderPlacingDate());
-                System.out.println("-----------------");
-            }
-        }
-
-        if (!foundFlag) {
-            System.out.println("No Order Found");
-        }
-    }
 
 
     public static void placeAnOrder() {

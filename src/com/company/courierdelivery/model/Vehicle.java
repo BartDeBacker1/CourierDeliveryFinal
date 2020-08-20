@@ -4,6 +4,7 @@ package com.company.courierdelivery.model;
 public class Vehicle {
 
     private int id;
+    private int userId;
     private double width;
     private double height;
     private double capacity; // width x height
@@ -13,9 +14,9 @@ public class Vehicle {
         super();
     }
 
-    public Vehicle(int id, double width, double height, double capacity, String status) {
-        super();
+    public Vehicle(int id, int userId, double width, double height, double capacity, String status) {
         this.id = id;
+        this.userId = userId;
         this.width = width;
         this.height = height;
         this.capacity = capacity;
@@ -35,6 +36,14 @@ public class Vehicle {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public double getWidth() {

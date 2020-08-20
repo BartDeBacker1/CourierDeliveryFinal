@@ -17,18 +17,16 @@ public class OrderDAO {
         try {
             Connection connection = DatabaseConnection.getConnection();
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into `order`(customer_name,width,height,capacity,"
-                            + "source_address,destination_address,status,order_placing_date)"
-                            + " values(?,?,?,?,?,?,?,?);");
+                    .prepareStatement("insert into `order`(user_id, address_id, width, height, status, order_placing_date, comment)"
+                            + " values(?,?,?,?,?,?,?);");
 
-            preparedStatement.setString(1, order.getCustomerName());
-            preparedStatement.setDouble(2, order.getWidth());
-            preparedStatement.setDouble(3, order.getHeight());
-            preparedStatement.setDouble(4, order.getCapacity());
-            preparedStatement.setString(5, order.getSourceAddress());
-            preparedStatement.setString(6, order.getDestinationAddress());
-            preparedStatement.setString(7, order.getStatus());
-            preparedStatement.setString(8, order.getOrderPlacingDate());
+            preparedStatement.setInt(1, order.getUserId());
+            preparedStatement.setDouble(2, order.getDestinationAddressId());
+            preparedStatement.setDouble(3, order.getWidth());
+            preparedStatement.setDouble(4, order.getHeight());
+            preparedStatement.setString(5, order.getStatus());
+            preparedStatement.setString(6, order.getOrderPlacingDate());
+            preparedStatement.setString(7, order.getComment());
             // System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -49,16 +47,14 @@ public class OrderDAO {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String customer_name = rs.getString("customer_name");
+                int user_id = rs.getInt("user_id");
+                int address_id = rs.getInt("address_id");
                 Double width = rs.getDouble("width");
                 Double height = rs.getDouble("height");
-                Double capacity = rs.getDouble("capacity");
-                String source_address = rs.getString("source_address");
-                String destination_address = rs.getString("destination_address");
                 String status = rs.getString("status");
                 String orderPlacingDate = rs.getString("order_placing_date");
-                orders.add(new Order(id, customer_name, width, height, capacity, source_address, destination_address,
-                        status, orderPlacingDate));
+                String comment = rs.getString("comment");
+                orders.add(new Order(id, user_id, address_id, status, width, height, comment, orderPlacingDate));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

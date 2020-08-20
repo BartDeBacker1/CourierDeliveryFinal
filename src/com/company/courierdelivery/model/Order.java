@@ -4,30 +4,26 @@ package com.company.courierdelivery.model;
 public class Order {
 
     private int id;
-    private String customerName;
+    private int userId;
+    private int destinationAddressId;
+    private String status;
     private double width;
     private double height;
-    private double capacity; // width x height
-    private String sourceAddress;
-    private String destinationAddress;
-    private String status;
+    private String comment;
     private String orderPlacingDate;
 
     public Order() {
 
     }
 
-    public Order(int id, String customerName, double width, double height, double capacity, String sourceAddress,
-                 String destinationAddress, String status, String orderPlacingDate) {
-        super();
+    public Order(int id, int userId, int destinationAddressId, String status, double width, double height, String comment, String orderPlacingDate) {
         this.id = id;
-        this.customerName = customerName;
+        this.userId = userId;
+        this.destinationAddressId = destinationAddressId;
+        this.status = status;
         this.width = width;
         this.height = height;
-        this.capacity = capacity;
-        this.sourceAddress = sourceAddress;
-        this.destinationAddress = destinationAddress;
-        this.status = status;
+        this.comment = comment;
         this.orderPlacingDate = orderPlacingDate;
     }
 
@@ -39,12 +35,28 @@ public class Order {
         this.id = id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getDestinationAddressId() {
+        return destinationAddressId;
+    }
+
+    public void setDestinationAddressId(int destinationAddressId) {
+        this.destinationAddressId = destinationAddressId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public double getWidth() {
@@ -63,36 +75,12 @@ public class Order {
         this.height = height;
     }
 
-    public double getCapacity() {
-        return capacity;
+    public String getComment() {
+        return comment;
     }
 
-    public void setCapacity(double capacity) {
-        this.capacity = capacity;
-    }
-
-    public String getSourceAddress() {
-        return sourceAddress;
-    }
-
-    public void setSourceAddress(String sourceAddress) {
-        this.sourceAddress = sourceAddress;
-    }
-
-    public String getDestinationAddress() {
-        return destinationAddress;
-    }
-
-    public void setDestinationAddress(String destinationAddress) {
-        this.destinationAddress = destinationAddress;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getOrderPlacingDate() {
