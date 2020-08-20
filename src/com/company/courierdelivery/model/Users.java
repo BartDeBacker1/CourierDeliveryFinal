@@ -2,19 +2,17 @@ package com.company.courierdelivery.model;
 
 public class Users {
     private int id;
-    private String addressId;
+    private int addressId;
     private String username;
     private String hash;
-    private Status status;
+    private String status;
     private String email;
-
-    public enum Status {courier, customer};
 
     public Users() {
 
     }
 
-    public Users(int id, String addressId, String username, String hash, Status status, String email) {
+    public Users(int id, int addressId, String username, String hash, String status, String email) {
         this.id = id;
         this.addressId = addressId;
         this.username = username;
@@ -31,11 +29,11 @@ public class Users {
         this.id = id;
     }
 
-    public String getAddressId() {
+    public int getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(String addressId) {
+    public void setAddressId(int addressId) {
         this.addressId = addressId;
     }
 
@@ -55,11 +53,11 @@ public class Users {
         this.hash = hash;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
