@@ -1,22 +1,25 @@
 package com.company.courierdelivery.model;
 
+import java.sql.Date;
+
 // Order Class with all attributes, Constructor and Setter/Getters
 public class Order {
 
     private int id;
     private int userId;
+    private int vehicleId;
     private int destinationAddressId;
     private String status;
     private double width;
     private double height;
     private String comment;
-    private String orderPlacingDate;
+    private Date orderPlacingDate;
 
     public Order() {
 
     }
 
-    public Order(int id, int userId, int destinationAddressId, String status, double width, double height, String comment, String orderPlacingDate) {
+    public Order(int id, int userId, int destinationAddressId, String status, double width, double height, String comment, Date orderPlacingDate, int vehicleId) {
         this.id = id;
         this.userId = userId;
         this.destinationAddressId = destinationAddressId;
@@ -25,6 +28,7 @@ public class Order {
         this.height = height;
         this.comment = comment;
         this.orderPlacingDate = orderPlacingDate;
+        this.vehicleId = vehicleId;
     }
 
     public int getId() {
@@ -83,11 +87,19 @@ public class Order {
         this.comment = comment;
     }
 
-    public String getOrderPlacingDate() {
+    public Date getOrderPlacingDate() {
         return orderPlacingDate;
     }
 
-    public void setOrderPlacingDate(String orderPlacingDate) {
+    public void setOrderPlacingDate(Date orderPlacingDate) {
         this.orderPlacingDate = orderPlacingDate;
+    }
+
+    public int getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(int vehicleId) {
+        this.vehicleId = vehicleId;
     }
 }

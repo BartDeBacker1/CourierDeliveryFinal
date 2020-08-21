@@ -6,12 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-
+import com.company.courierdelivery.model.User;
 import com.company.courierdelivery.utils.DatabaseConnection;
 
-public class UsersDAO {
+public class UserDAO {
 
-    public boolean searchUserById(int id) {
+    public User getUserById(int id) {
 
         try {
             Connection connection = DatabaseConnection.getConnection();
@@ -21,17 +21,20 @@ public class UsersDAO {
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            int retrievedId = -1;
             if (rs.next()) {
-                retrievedId = rs.getInt("id");
+                int userId = rs.getInt("id");
+                int addressId = rs.getInt("address_id");
+                String username = rs.getString("username");
+                String hash = rs.getString("hash");
+                String status = rs.getString("status");
+                String email = rs.getString("email");
+
+                return new User(id, addressId, username, hash, status, email);
             }
 
-            if (retrievedId == -1)
-                return false;
-            return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return false;
+        return null;
     }
 }

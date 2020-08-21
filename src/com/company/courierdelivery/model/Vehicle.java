@@ -7,7 +7,7 @@ public class Vehicle {
     private int userId;
     private double width;
     private double height;
-    private double capacity; // width x height
+    private double capacity;
     private String status;
 
     public Vehicle() {

@@ -1,6 +1,6 @@
 package com.company.courierdelivery.model;
 
-public class Users {
+public class User {
     private int id;
     private int addressId;
     private String username;
@@ -8,11 +8,11 @@ public class Users {
     private String status;
     private String email;
 
-    public Users() {
+    public User() {
 
     }
 
-    public Users(int id, int addressId, String username, String hash, String status, String email) {
+    public User(int id, int addressId, String username, String hash, String status, String email) {
         this.id = id;
         this.addressId = addressId;
         this.username = username;
